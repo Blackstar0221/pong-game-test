@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+        }
+
+        #gameCanvas {
+            display: block;
+            background: #1a1a2e;
+            border: 3px solid white;
+            margin: 0 auto 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+            height: auto;
+            touch-action: none;
+        }
+
+        .scoreboard {
+            display: flex;
+            justify-content: space-around;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .player-score, .computer-score {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .controls {
+            color: white;
+            font-size: 13px;
+            margin: 15px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            line-height: 1.6;
+        }
+
+        .controls p {
+            margin: 5px 0;
+        }
+
+        .game-status {
+            color: #4fffb9;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 10px 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .reset-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4fffb9;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background-color: #2fe0b8;
+            transform: scale(1.05);
+        }
+
+        .reset-btn:active {
+            transform: scale(0.95);
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .control-btn {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #4fffb9;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .control-btn:active {
+            background-color: #2fe0b8;
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+            .scoreboard {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            .controls {
+                font-size: 12px;
+            }
+            .control-btn {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏓 Pong Game</h1>
+        <div class="scoreboard">
+            <div class="player-score">Player: <span id="playerScore">0</span></div>
+            <div class="computer-score">Computer: <span id="computerScore">0</span></div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <div class="controls">
+            <p>📱 <strong>Mobile:</strong> Tap UP/DOWN or drag on canvas</p>
+            <p>⌨️ <strong>Desktop:</strong> Arrow Keys or Mouse</p>
+            <p>🤖 <strong>Computer:</strong> AI controlled</p>
+        </div>
+        <div class="game-status">Press any key or tap to start!</div>
+        
+        <div class="control
